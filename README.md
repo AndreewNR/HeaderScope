@@ -90,7 +90,7 @@ python -m HeaderScope.cli http://example.com --json --html
 HeaderScope incluye ayuda integrada mediante --help:
 
 ```bash
-python -m HeaderScope.cli http://example.com --json --html
+python -m HeaderScope.cli http://example.com --help
 ```
 
 Salida Esperada:
