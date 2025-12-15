@@ -1,0 +1,106 @@
+{
+    "tool": "HeaderScope",
+    "version": "1.0",
+    "scan_date": "2025-12-15T05:55:47.698337Z",
+    "target": {
+        "url": "https://osintdomain.com",
+        "domain": "osintdomain.com",
+        "ip": "40.70.147.7",
+        "server": "gunicorn"
+    },
+    "score": {
+        "total": 65,
+        "max": 100,
+        "rating": "Medium"
+    },
+    "headers": {
+        "classic": [
+            {
+                "name": "Strict-Transport-Security",
+                "status": "present",
+                "severity": "Low",
+                "issue": "No se incluye preload (recomendado)",
+                "impact": "Permite ataques de SSL Stripping y downgrade a HTTP.",
+                "recommendation": "Configurar Strict-Transport-Security con max-age=31536000; includeSubDomains; preload"
+            },
+            {
+                "name": "Content-Security-Policy",
+                "status": "present",
+                "severity": "Medium",
+                "issue": "Uso de 'unsafe-inline' (riesgo de XSS)",
+                "impact": "Incrementa el riesgo de ataques XSS y de inyección de contenido.",
+                "recommendation": "Definir una Content-Security-Policy restrictiva, evitando 'unsafe-inline' y 'unsafe-eval'."
+            },
+            {
+                "name": "X-Frame-Options",
+                "status": "present",
+                "severity": "Info",
+                "issue": "Configuración adecuada",
+                "impact": "Sin impacto significativo",
+                "recommendation": "No requiere acción"
+            },
+            {
+                "name": "X-Content-Type-Options",
+                "status": "present",
+                "severity": "Info",
+                "issue": "Configuración adecuada",
+                "impact": "Sin impacto significativo",
+                "recommendation": "No requiere acción"
+            },
+            {
+                "name": "Referrer-Policy",
+                "status": "present",
+                "severity": "Info",
+                "issue": "Configuración adecuada",
+                "impact": "Sin impacto significativo",
+                "recommendation": "No requiere acción"
+            },
+            {
+                "name": "Permissions-Policy",
+                "status": "missing",
+                "severity": "Medium",
+                "issue": "Cabecera no presente",
+                "impact": "Permite el uso innecesario de APIs del navegador (cámara, micrófono, geolocalización).",
+                "recommendation": "Restringir APIs del navegador, por ejemplo: camera=(), microphone=(), geolocation=()."
+            }
+        ],
+        "modern": [
+            {
+                "name": "Cross-Origin-Opener-Policy",
+                "status": "missing",
+                "severity": "Medium",
+                "issue": "Cabecera no presente",
+                "impact": "Sin COOP, la aplicación puede ser vulnerable a XS-Leaks y ataques de aislamiento de contexto.",
+                "recommendation": "Configurar Cross-Origin-Opener-Policy: same-origin para habilitar aislamiento de contexto."
+            },
+            {
+                "name": "Cross-Origin-Embedder-Policy",
+                "status": "missing",
+                "severity": "Medium",
+                "issue": "Cabecera no presente",
+                "impact": "Sin COEP, no se garantiza aislamiento completo entre recursos cross-origin.",
+                "recommendation": "Configurar Cross-Origin-Embedder-Policy: require-corp para recursos sensibles."
+            },
+            {
+                "name": "Cross-Origin-Resource-Policy",
+                "status": "missing",
+                "severity": "Low",
+                "issue": "Cabecera no presente",
+                "impact": "Permite que recursos puedan ser embebidos desde otros orígenes sin restricciones.",
+                "recommendation": "Configurar Cross-Origin-Resource-Policy: same-origin o same-site según el caso."
+            }
+        ]
+    },
+    "cookies": {
+        "detected": true,
+        "items": [
+            {
+                "name": "Set-Cookie",
+                "status": "missing",
+                "severity": "Medium",
+                "issue": "No se detectaron cookies HTTP",
+                "recommendation": "Si la aplicación usa sesiones, configurar cookies con Secure, HttpOnly y SameSite."
+            }
+        ]
+    }
+}

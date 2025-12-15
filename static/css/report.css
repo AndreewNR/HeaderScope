@@ -1,0 +1,374 @@
+/* =====================
+   VARIABLES GLOBALES
+===================== */
+:root {
+  --bg: #0e1117;
+  --card: #161b22;
+  --card-soft: #1f2630;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --accent: #58a6ff;
+  --danger: #ff4d4f;
+  --warn: #feca57;
+  --ok: #1dd1a1;
+  --info: #3b82f6;
+}
+
+/* =====================
+   RESET / BASE
+===================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Arial;
+  background: radial-gradient(circle at top, #0b1325 0%, #0e1117 60%);
+  color: var(--text);
+  line-height: 1.45;
+}
+
+/* =====================
+   HEADER PROFESIONAL
+===================== */
+
+.app-header {
+  padding: 28px 36px;
+  background:
+    radial-gradient(circle at top left, #111827 0%, #0e1117 60%);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Marca */
+.brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-size: 1.9rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.brand-subtitle {
+  margin-top: 6px;
+  font-size: 0.95rem;
+  color: #9aa4b2;
+  max-width: 520px;
+}
+
+/* Pills derecha */
+.header-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  padding: 6px 14px;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  color: #cfe3ff;
+  background: linear-gradient(
+    180deg,
+    rgba(88,166,255,0.18),
+    rgba(88,166,255,0.08)
+  );
+  border: 1px solid rgba(88,166,255,0.35);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.05),
+    0 4px 14px rgba(0,0,0,0.35);
+}
+
+/* =====================
+   BADGE DE RIESGO
+===================== */
+
+.risk-badge {
+  padding: 6px 16px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.06),
+    0 6px 18px rgba(0,0,0,0.45);
+}
+
+/* Riesgo Alto */
+.risk-alto {
+  color: #ffd6d6;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 70, 70, 0.25),
+    rgba(255, 70, 70, 0.12)
+  );
+  border-color: rgba(255, 70, 70, 0.45);
+}
+
+/* Riesgo Medio */
+.risk-medio {
+  color: #ffe6b3;
+  background: linear-gradient(
+    180deg,
+    rgba(254, 202, 87, 0.28),
+    rgba(254, 202, 87, 0.14)
+  );
+  border-color: rgba(254, 202, 87, 0.45);
+}
+
+/* Riesgo Bajo */
+.risk-bajo {
+  color: #caffea;
+  background: linear-gradient(
+    180deg,
+    rgba(29, 209, 161, 0.28),
+    rgba(29, 209, 161, 0.14)
+  );
+  border-color: rgba(29, 209, 161, 0.45);
+}
+
+/* =====================
+   CONTAINER
+===================== */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 26px 20px 40px;
+}
+
+/* =====================
+   CARDS
+===================== */
+.card {
+  background: radial-gradient(
+    circle at top,
+    #1b2230 0%,
+    #0e1117 65%
+  );
+  border-radius: 16px;
+  padding: 26px;
+  margin-bottom: 28px;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.04),
+    0 14px 34px rgba(0,0,0,0.45);
+}
+
+/* =====================
+   TITULOS / TEXTOS
+===================== */
+.card h2 {
+  font-size: 1.25rem;
+  margin: 0 0 6px;
+  color: white !important;
+}
+
+.section-desc {
+  font-size: 0.92rem;
+  color: #9aa4b2;
+  max-width: 760px;
+  margin-bottom: 18px;
+}
+
+/* =====================
+   OBJETIVO ANALIZADO
+===================== */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.target-grid > div {
+  background: rgba(255,255,255,0.025);
+  border-radius: 12px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #7d8590;
+}
+
+.value {
+  font-size: 0.95rem;
+  margin-top: 6px;
+  word-break: break-all;
+}
+
+/* =====================
+   KPIs
+===================== */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.kpi {
+  background: linear-gradient(
+    180deg,
+    #1f2630,
+    #161b22
+  );
+  border-radius: 14px;
+  padding: 22px;
+  text-align: center;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
+}
+
+.kpi span {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #9aa4b2;
+}
+
+.kpi strong {
+  display: block;
+  font-size: 2rem;
+  margin-top: 6px;
+}
+
+/* =====================
+   GRAFICOS (CLAVE)
+===================== */
+.chart-single {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 22px 0 10px;
+  color: white !important;
+}
+
+/* Canvas general */
+.chart-single canvas {
+  max-width: 100%;
+  height: auto;
+  color: white !important;
+
+}
+
+/* Score global */
+#scoreChart {
+  max-width: 380px;
+  max-height: 380px;
+}
+
+/* Distribución controles */
+#headersChart {
+  max-width: 560px;
+  max-height: 320px;
+}
+
+/* Severidad */
+#severityChart {
+  max-width: 440px;
+  max-height: 360px;
+}
+
+/* =====================
+   TABLAS
+===================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  vertical-align: top;
+}
+
+th {
+  text-align: left;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+td {
+  font-size: 0.9rem;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 2px;
+}
+
+/* =====================
+   ESTADOS
+===================== */
+.ok {
+  color: var(--ok);
+  font-weight: 600;
+}
+
+.danger {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+/* =====================
+   FOOTER
+===================== */
+.footer {
+  text-align: center;
+  padding: 24px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 600px) {
+  .kpi strong {
+    font-size: 1.5rem;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  #headersChart {
+    max-width: 100%;
+  }
+}
+
+/* =====================
+   RESPONSIVE HEADER
+===================== */
+@media (max-width: 768px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-meta {
+    margin-top: 12px;
+  }
+}

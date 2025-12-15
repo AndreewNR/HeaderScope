@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>HeaderScope · Reporte</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../static/css/report.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-title">HeaderScope</div>
+      <div class="brand-subtitle">
+        Reporte de Análisis de Seguridad en Cabeceras HTTP
+      </div>
+    </div>
+
+    <div class="header-meta">
+      <span class="pill">HTTP Security</span>
+      <span class="pill">Headers & Cookies</span>
+
+      <span class="risk-badge risk-medio">
+        RIESGO MEDIO
+      </span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="card info">
+    <div class="card-head">
+      <h2>Objetivo Analizado</h2>
+      <p class="section-desc">Información técnica del activo evaluado durante el análisis.</p>
+    </div>
+
+    <div class="grid-2 target-grid">
+      <div class="kv">
+        <span class="label">URL</span>
+        <div class="value">https://osintdomain.com</div>
+      </div>
+
+      <div class="kv">
+        <span class="label">Dominio</span>
+        <div class="value">osintdomain.com</div>
+      </div>
+
+      <div class="kv">
+        <span class="label">Dirección IP</span>
+        <div class="value">40.70.147.7</div>
+      </div>
+
+      <div class="kv">
+        <span class="label">Servidor Web</span>
+        <div class="value">gunicorn</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="kpi-grid">
+    <div class="kpi">
+      <span>Score General</span>
+      <strong>65/100</strong>
+    </div>
+    <div class="kpi">
+      <span>Cabeceras Clásicas</span>
+      <strong>6</strong>
+    </div>
+    <div class="kpi">
+      <span>Cabeceras Modernas</span>
+      <strong>3</strong>
+    </div>
+    <div class="kpi">
+      <span>Cookies</span>
+      <strong>1</strong>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Resumen Visual · Puntaje Global</h2>
+    <p class="section-desc">
+      Nivel general de seguridad del objetivo evaluado en función de cabeceras HTTP y cookies.
+    </p>
+    <div class="chart-single" style="color: wheat !important;">
+      <canvas id="scoreChart"></canvas>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Resumen Visual · Controles Analizados</h2>
+    <p class="section-desc">
+      Distribución de cabeceras clásicas, modernas y cookies revisadas.
+    </p>
+    <div class="chart-single">
+      <canvas id="headersChart"></canvas>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Resumen Visual · Severidad de Hallazgos</h2>
+    <p class="section-desc">
+      Clasificación del riesgo asociado a los hallazgos detectados en el análisis.
+    </p>
+    <div class="chart-single">
+      <canvas id="severityChart"></canvas>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Cabeceras de Seguridad</h2>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Cabecera</th>
+          <th>Estado</th>
+          <th>Severidad</th>
+          <th>Detalle</th>
+          <th>Recomendación</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+            <td>Strict-Transport-Security</td>
+            <td class="ok">Presente</td>
+            <td>Low</td>
+            <td><div class='muted'>No se incluye preload (recomendado)</div><div class='muted'><strong>Impacto:</strong> Permite ataques de SSL Stripping y downgrade a HTTP.</div></td>
+            <td><div class="muted">Configurar Strict-Transport-Security con max-age=31536000; includeSubDomains; preload</div></td>
+        </tr>
+        
+        <tr>
+            <td>Content-Security-Policy</td>
+            <td class="ok">Presente</td>
+            <td>Medium</td>
+            <td><div class='muted'>Uso de &#x27;unsafe-inline&#x27; (riesgo de XSS)</div><div class='muted'><strong>Impacto:</strong> Incrementa el riesgo de ataques XSS y de inyección de contenido.</div></td>
+            <td><div class="muted">Definir una Content-Security-Policy restrictiva, evitando &#x27;unsafe-inline&#x27; y &#x27;unsafe-eval&#x27;.</div></td>
+        </tr>
+        
+        <tr>
+            <td>X-Frame-Options</td>
+            <td class="ok">Presente</td>
+            <td>Info</td>
+            <td><div class='muted'>Configuración adecuada</div><div class='muted'><strong>Impacto:</strong> Sin impacto significativo</div></td>
+            <td><div class="muted">No requiere acción</div></td>
+        </tr>
+        
+        <tr>
+            <td>X-Content-Type-Options</td>
+            <td class="ok">Presente</td>
+            <td>Info</td>
+            <td><div class='muted'>Configuración adecuada</div><div class='muted'><strong>Impacto:</strong> Sin impacto significativo</div></td>
+            <td><div class="muted">No requiere acción</div></td>
+        </tr>
+        
+        <tr>
+            <td>Referrer-Policy</td>
+            <td class="ok">Presente</td>
+            <td>Info</td>
+            <td><div class='muted'>Configuración adecuada</div><div class='muted'><strong>Impacto:</strong> Sin impacto significativo</div></td>
+            <td><div class="muted">No requiere acción</div></td>
+        </tr>
+        
+        <tr>
+            <td>Permissions-Policy</td>
+            <td class="danger">Ausente</td>
+            <td>Medium</td>
+            <td><div class='muted'>Cabecera no presente</div><div class='muted'><strong>Impacto:</strong> Permite el uso innecesario de APIs del navegador (cámara, micrófono, geolocalización).</div></td>
+            <td><div class="muted">Restringir APIs del navegador, por ejemplo: camera=(), microphone=(), geolocation=().</div></td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </section>
+
+  <section class="card">
+    <h2>Cabeceras Modernas (Cross-Origin)</h2>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Cabecera</th>
+          <th>Estado</th>
+          <th>Severidad</th>
+          <th>Detalle</th>
+          <th>Recomendación</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+            <td>Cross-Origin-Opener-Policy</td>
+            <td class="danger">Ausente</td>
+            <td>Medium</td>
+            <td><div class='muted'>Cabecera no presente</div><div class='muted'><strong>Impacto:</strong> Sin COOP, la aplicación puede ser vulnerable a XS-Leaks y ataques de aislamiento de contexto.</div></td>
+            <td><div class="muted">Configurar Cross-Origin-Opener-Policy: same-origin para habilitar aislamiento de contexto.</div></td>
+        </tr>
+        
+        <tr>
+            <td>Cross-Origin-Embedder-Policy</td>
+            <td class="danger">Ausente</td>
+            <td>Medium</td>
+            <td><div class='muted'>Cabecera no presente</div><div class='muted'><strong>Impacto:</strong> Sin COEP, no se garantiza aislamiento completo entre recursos cross-origin.</div></td>
+            <td><div class="muted">Configurar Cross-Origin-Embedder-Policy: require-corp para recursos sensibles.</div></td>
+        </tr>
+        
+        <tr>
+            <td>Cross-Origin-Resource-Policy</td>
+            <td class="danger">Ausente</td>
+            <td>Low</td>
+            <td><div class='muted'>Cabecera no presente</div><div class='muted'><strong>Impacto:</strong> Permite que recursos puedan ser embebidos desde otros orígenes sin restricciones.</div></td>
+            <td><div class="muted">Configurar Cross-Origin-Resource-Policy: same-origin o same-site según el caso.</div></td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </section>
+
+  <section class="card">
+    <h2>Cookies HTTP</h2>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Cookie</th>
+          <th>Estado</th>
+          <th>Severidad</th>
+          <th>Detalle</th>
+          <th>Recomendación</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+            <td>Set-Cookie</td>
+            <td class="danger">Ausente</td>
+            <td>Medium</td>
+            <td><div class='muted'>No se detectaron cookies HTTP</div></td>
+            <td><div class="muted">Si la aplicación usa sesiones, configurar cookies con Secure, HttpOnly y SameSite.</div></td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </section>
+
+</main>
+
+<footer class="footer">
+  Generated HeaderScope - By AndreewN
+</footer>
+
+<script>
+  window.HEADER_SCOPE_DATA = {
+    score: 65,
+    headers: 6,
+    modern: 3,
+    cookies: 1,
+    severities: {
+      high: $sev_high,
+      medium: $sev_medium,
+      low: $sev_low,
+      info: $sev_info
+    }
+  };
+</script>
+
+<script src="../static/js/report.js"></script>
+
+    <script>
+      window.HEADERSCOPE_DATA = {"headers": {"classic": 6, "modern": 3, "cookies": 1}, "severity": {"High": 0, "Medium": 5, "Low": 2, "Info": 3}, "score": 65};
+    </script>
+    
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>HeaderScope · Reporte</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../static/css/report.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-title">HeaderScope</div>
+      <div class="brand-subtitle">
+        Reporte de Análisis de Seguridad en Cabeceras HTTP
+      </div>
+    </div>
+
+    <div class="header-meta">
+      <span class="pill">HTTP Security</span>
+      <span class="pill">Headers & Cookies</span>
+
+      <span class="risk-badge risk-$risk_level">
+        $risk_label
+      </span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="card info">
+    <div class="card-head">
+      <h2>Objetivo Analizado</h2>
+      <p class="section-desc">Información técnica del activo evaluado durante el análisis.</p>
+    </div>
+
+    <div class="grid-2 target-grid">
+      <div class="kv">
+        <span class="label">URL</span>
+        <div class="value">$url</div>
+      </div>
+
+      <div class="kv">
+        <span class="label">Dominio</span>
+        <div class="value">$domain</div>
+      </div>
+
+      <div class="kv">
+        <span class="label">Dirección IP</span>
+        <div class="value">$ip</div>
+      </div>
+
+      <div class="kv">
+        <span class="label">Servidor Web</span>
+        <div class="value">$server</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="kpi-grid">
+    <div class="kpi">
+      <span>Score General</span>
+      <strong>$score/100</strong>
+    </div>
+    <div class="kpi">
+      <span>Cabeceras Clásicas</span>
+      <strong>$headers_total</strong>
+    </div>
+    <div class="kpi">
+      <span>Cabeceras Modernas</span>
+      <strong>$modern_total</strong>
+    </div>
+    <div class="kpi">
+      <span>Cookies</span>
+      <strong>$cookies_total</strong>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Resumen Visual · Puntaje Global</h2>
+    <p class="section-desc">
+      Nivel general de seguridad del objetivo evaluado en función de cabeceras HTTP y cookies.
+    </p>
+    <div class="chart-single" style="color: wheat !important;">
+      <canvas id="scoreChart"></canvas>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Resumen Visual · Controles Analizados</h2>
+    <p class="section-desc">
+      Distribución de cabeceras clásicas, modernas y cookies revisadas.
+    </p>
+    <div class="chart-single">
+      <canvas id="headersChart"></canvas>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Resumen Visual · Severidad de Hallazgos</h2>
+    <p class="section-desc">
+      Clasificación del riesgo asociado a los hallazgos detectados en el análisis.
+    </p>
+    <div class="chart-single">
+      <canvas id="severityChart"></canvas>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Cabeceras de Seguridad</h2>
+    $table_headers
+  </section>
+
+  <section class="card">
+    <h2>Cabeceras Modernas (Cross-Origin)</h2>
+    $table_modern
+  </section>
+
+  <section class="card">
+    <h2>Cookies HTTP</h2>
+    $table_cookies
+  </section>
+
+</main>
+
+<footer class="footer">
+  Generated HeaderScope - By AndreewN
+</footer>
+
+<script>
+  window.HEADER_SCOPE_DATA = {
+    score: $score,
+    headers: $headers_total,
+    modern: $modern_total,
+    cookies: $cookies_total,
+    severities: {
+      high: $sev_high,
+      medium: $sev_medium,
+      low: $sev_low,
+      info: $sev_info
+    }
+  };
+</script>
+
+<script src="../static/js/report.js"></script>
+$charts_data
+
+</body>
+</html>
