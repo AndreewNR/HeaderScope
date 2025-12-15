@@ -72,14 +72,19 @@ python -m HeaderScope.cli http://example.com --json --html
 
 ### 🧪 Ejemplo de uso
 
-[+] Analizando: https://example.com
-[+] Cabeceras clásicas evaluadas
-[+] Cabeceras modernas evaluadas
-[+] Cookies HTTP analizadas
-[+] Score de seguridad: 72/100
+  [+] Analizando: https://example.com
+  
+  [+] Cabeceras clásicas evaluadas
+  
+  [+] Cabeceras modernas evaluadas
+  
+  [+] Cookies HTTP analizadas
+  
+  [+] Score de seguridad: 72/100
 
-[✔] Resultado exportado en JSON: reports/headerscope_example.com.json
-[✔] Reporte HTML generado: reports/headerscope_example.com.html
+  [✔] Resultado exportado en JSON: reports/headerscope_example.com.json
+  
+  [✔] Reporte HTML generado: reports/headerscope_example.com.html
 
 ### 🆘 Ayuda integrada
 HeaderScope incluye ayuda integrada mediante --help:
