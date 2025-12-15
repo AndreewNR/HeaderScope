@@ -46,7 +46,7 @@ Además, genera **reportes técnicos en JSON y HTML**, listos para ser reutiliza
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/HeaderScope.git
+git clone https://github.com/AndreewNR/HeaderScope.git
 cd HeaderScope
 ```
 
