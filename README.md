@@ -96,15 +96,26 @@ python -m HeaderScope.cli http://example.com --help
 Salida Esperada:
 
 ```bash
-usage: HeaderScope [-h] [--json] [--html] url
+usage: HeaderScope [-h] [--json] [--html] [--version] url
 
-HeaderScope - Análisis de Seguridad de Cabeceras HTTP
+HeaderScope — Herramienta de análisis de seguridad en cabeceras HTTP.
+
+Analiza cabeceras de seguridad HTTP, cookies y políticas modernas Cross-Origin para identificar configuraciones inseguras, asignar un puntaje de riesgo y generar reportes técnicos.
+
+Ejemplo de uso:
+  python -m HeaderScope.cli https://example.com
+  python -m HeaderScope.cli https://example.com --json
+  python -m HeaderScope.cli https://example.com --json --html
 
 positional arguments:
-  url           URL objetivo (ejemplo: https://example.com)
+  url         URL objetivo a analizar (ejemplo: https://example.com)
 
-optional arguments:
-  -h, --help    Muestra este mensaje de ayuda
-  --json        Exportar el resultado en formato JSON
-  --html        Exportar el resultado en formato HTML (requiere --json)
+options:
+  -h, --help  show this help message and exit
+  --json      Exporta los resultados del análisis en formato JSON.
+              Incluye cabeceras evaluadas, cookies, severidades y score final.
+  --html      Genera un reporte HTML visual a partir del JSON.
+              Este reporte incluye gráficos, tablas y recomendaciones.
+              Requiere usar también el flag --json.
+  --version   show program's version number and exit
 ```
